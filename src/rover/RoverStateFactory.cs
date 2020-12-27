@@ -11,13 +11,15 @@ namespace rover
             switch (direction)
             {
                 case RoverDirection.North:
-                    {
-                        return new RoverStateFacingNorth();
-                    }
+                    return new RoverStateFacingNorth();
+                case RoverDirection.East:
+                    return new RoverStateFacingEast();
+                case RoverDirection.West:
+                    return new RoverStateFacingWest();
+                case RoverDirection.South:
+                    return new RoverStateFacingSouth();
                 default:
-                    {
-                        return null;
-                    }
+                    return null;
             }
         }
     }

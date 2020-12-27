@@ -6,6 +6,7 @@ namespace rover
 {
     public abstract class IRoverState
     {
+        public abstract char GetFacingToDirection();
         public abstract void MoveAhead(Rover rover);
         public abstract void ChangeDirection(Rover rover, TurnDirection direction);
 

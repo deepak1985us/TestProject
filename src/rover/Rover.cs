@@ -12,7 +12,7 @@ namespace rover
         private IRoverState state;
         private IRoverAction actionToDo;
 
-        public Rover(int xMax, int yMax, int xPosition, int yPosition, RoverDirection direction)
+        public Rover(int xMax, int yMax, int xPosition, int yPosition, string direction)
         {
             this.currentLocation = new Point(xPosition, yPosition);
             this.maxLocation = new Point(xMax, yMax);
@@ -38,6 +38,26 @@ namespace rover
         {
             this.state = RoverStateFactory.GetRoverState(newDirection);
         }
+        private void SetCurrentDirection(string direction)
+        {
+            switch (direction)
+            {
+                case "N":
+                    this.SetCurrentDirection(RoverDirection.North);
+                    break;
+                case "E":
+                    this.SetCurrentDirection(RoverDirection.East);
+                    break;
+                case "W":
+                    this.SetCurrentDirection(RoverDirection.West);
+                    break;
+                case "S":
+                    this.SetCurrentDirection(RoverDirection.South);
+                    break;
+                default:
+                    throw new InvalidCastException();
+            }
+        }
 
         public IRoverState GetCurrentState()
         {
@@ -49,10 +69,15 @@ namespace rover
             return this.actionToDo;
         }
 
-        public void DoAction(string actionToDo)
+        public void DoAction(char actionToDo)
         {
             this.actionToDo = RoverActionFactory.GetRoverAction(actionToDo);
             state.DoAction(this);
+        }
+
+        public string GetCurrentCoordinates()
+        {
+            return currentLocation.X.ToString() + " " + currentLocation.Y.ToString() + " " + state.GetFacingToDirection();
         }
     }
 }

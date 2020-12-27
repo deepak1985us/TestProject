@@ -6,19 +6,19 @@ namespace rover
 {
     public class RoverActionFactory
     {
-        public static IRoverAction GetRoverAction(string actionToDo)
+        public static IRoverAction GetRoverAction(char actionToDo)
         {
             switch (actionToDo)
             {
-                case "M":
+                case 'M':
                     {
                         return new RoverActionMoveForward();
                     }
-                case "R":
+                case 'R':
                     {
                         return new RoverActionTurnRight();
                     }
-                case "L":
+                case 'L':
                     {
                         return new RoverActionTurnLeft();
                     }

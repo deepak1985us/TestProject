@@ -20,6 +20,11 @@ namespace rover
             }
         }
 
+        public override char GetFacingToDirection()
+        {
+            return 'N';
+        }
+
         public override void MoveAhead(Rover rover)
         {
             //TODO: Check collision with another Rover
